@@ -6,7 +6,6 @@ import initialBackground from "./assets/initial_background.svg";
 
 function App() {
   const [textIndex, setTextIndex] = useState(0);
-  const bgUrl = "src/assets/initial_background.svg";
 
   function updateTextIndex() {
     setTextIndex((prevIndex) => {
@@ -20,7 +19,8 @@ function App() {
 
   return (
     <div
-      className={`w-full h-screen bg-[url('${bgUrl}')] bg-cover bg-center opacity-75`}
+      className={`w-full h-screen bg-cover bg-center opacity-75`}
+      style={{ backgroundImage: `url(${initialBackground})` }}
     >
       <div className="items-center gap-6 flex flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <AnimatePresence mode="wait">
