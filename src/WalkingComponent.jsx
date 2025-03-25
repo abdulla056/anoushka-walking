@@ -7,7 +7,7 @@ import PrimaryButton from "./PrimaryButton";
 export default function WalkingComponent() {
   const [start, setStart] = useState(true);
   const [isWalking, setIsWalking] = useState(false);
-  const [progress, setProgress] = useState(-110);
+  const [progress, setProgress] = useState(-150);
 
   const sendMessage = () => {
     // const phoneNumber = "+600196381343";
@@ -74,7 +74,7 @@ export default function WalkingComponent() {
                 alt="walking gif"
                 className="w-32 h-32"
                 animate={{
-                  x: `${progress * 1.2}%`, // Move across screen
+                  x: `${progress * 1.02}%`, // Move across screen
                 }}
                 transition={{ type: "spring", stiffness: 50 }}
               />
