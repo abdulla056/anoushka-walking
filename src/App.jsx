@@ -10,6 +10,7 @@ import flower1 from "./assets/flower-1.svg";
 import flower2 from "./assets/flower-2.svg";
 import flower3 from "./assets/flower-3.svg";
 import rabbit3 from "./assets/rabbit-3.png";
+import PrimaryButton from "./PrimaryButton";
 
 function App() {
   const [textIndex, setTextIndex] = useState(0);
@@ -128,7 +129,6 @@ function App() {
           )}
         </AnimatePresence>
 
-
         {/* This is the initial text */}
         <AnimatePresence>
           {!walking && (
@@ -160,9 +160,10 @@ function App() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.5, delay: 1 }}
-                    onClick={() => setWalking(true)}
                   >
-                    Click here to start walking!
+                    <PrimaryButton onClick={() => setWalking(true)}>
+                      Click here to start walking!
+                    </PrimaryButton>
                   </motion.div>
                 )}
               </AnimatePresence>
