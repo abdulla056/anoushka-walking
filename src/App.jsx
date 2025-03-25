@@ -4,6 +4,8 @@ import { initialText } from "./assets/data";
 import { AnimatePresence, motion } from "framer-motion";
 import initialBackground from "./assets/initial_background.svg";
 import WalkingComponent from "./WalkingComponent";
+import rabbit from "./assets/rabbit.png";
+import rabbit2 from "./assets/rabbit-2.png";
 
 function App() {
   const [textIndex, setTextIndex] = useState(0);
@@ -33,7 +35,7 @@ function App() {
               exit={{ opacity: 0, y: -100 }}
               transition={{ duration: 0.5, delay: 0.7 }}
             >
-              <WalkingComponent/>
+              <WalkingComponent />
             </motion.div>
           )}
         </AnimatePresence>
@@ -44,7 +46,36 @@ function App() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -100 }}
               transition={{ duration: 0.5 }}
+              className="h-full w-full"
             >
+              <AnimatePresence>
+                {textIndex === initialText.length - 1 && (
+                  <motion.img
+                    initial={{ opacity: 0, x:150 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, y: -100 }}
+                    transition={{ duration: 0.5, delay:1.5 }}
+                    key={textIndex}
+                    src={rabbit}
+                    alt="rabbit"
+                    className="rounded-full w-48 h-48 fixed bottom-0 right-0 translate-x-1/2 -mr-12"
+                  />
+                )}
+              </AnimatePresence>
+              <AnimatePresence>
+                {textIndex === initialText.length - 1 && (
+                  <motion.img
+                    initial={{ opacity: 0, y:-350 }}
+                    animate={{ opacity: 1, y: -200 }}
+                    exit={{ opacity: 0, y: -100 }}
+                    transition={{ duration: 0.5, delay:1.5 }}
+                    key={textIndex}
+                    src={rabbit2}
+                    alt="rabbit"
+                    className="rounded-full w-48 h-48 fixed top-0 translate-x-1/2"
+                  />
+                )}
+              </AnimatePresence>
               <AnimatePresence mode="wait">
                 <motion.div
                   onClick={updateTextIndex}
