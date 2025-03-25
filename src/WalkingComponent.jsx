@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import walking from "./assets/walking.gif";
 import standing from "./assets/standing.png";
@@ -7,17 +7,40 @@ import PrimaryButton from "./PrimaryButton";
 export default function WalkingComponent() {
   const [start, setStart] = useState(true);
   const [isWalking, setIsWalking] = useState(false);
+  const [progress, setProgress] = useState(-110);
 
   const sendMessage = () => {
-    const phoneNumber = "+600196381343";
-    const message = encodeURIComponent("Hey Dudul Bozo! I'm starting to walk!");
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+    // const phoneNumber = "+600196381343";
+    // const message = encodeURIComponent("Hey Dudul Bozo! I'm starting to walk!");
+    // window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
     setStart(false);
   };
 
   function onWalkingClick() {
     setIsWalking((prev) => !prev);
   }
+
+  // function updateProgress() {
+  //   setProgress((prev) => {
+  //     if (prev === 100) {
+  //       return prev;
+  //     } else {
+  //       return prev + 1;
+  //     }
+  //   });
+  // }
+
+  useEffect(() => {
+    let interval;
+    if (isWalking) {
+      interval = setInterval(() => {
+        setProgress((prev) => (prev >= 100 ? 100 : prev + 1));
+      }, 100);
+    } else {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [isWalking]);
 
   return (
     <>
@@ -34,7 +57,7 @@ export default function WalkingComponent() {
               Now you can start walking! Thank you for going through the boring
               journey!
             </span>
-            <PrimaryButton onClick={()=>sendMessage()}>
+            <PrimaryButton onClick={() => sendMessage()}>
               Click to send Dudul Bozo a message that you're starting to walk,
               so that you'll never have to walk without company
             </PrimaryButton>
@@ -45,13 +68,16 @@ export default function WalkingComponent() {
       <AnimatePresence>
         <div className="w-full flex flex-col justify-center items-center relative">
           {!start && (
-            <div className="relative">
-              {/* GIF */}
-              {isWalking ? (
-                <img src={walking} alt="walking gif" className="relative" />
-              ) : (
-                <img src={standing} alt="walking gif" className="relative" />
-              )}
+            <>
+              <motion.img
+                src={isWalking ? walking : standing}
+                alt="walking gif"
+                className="w-32 h-32"
+                animate={{
+                  x: `${progress * 1.2}%`, // Move across screen
+                }}
+                transition={{ type: "spring", stiffness: 50 }}
+              />
 
               {/* Sparkles (only when walking) */}
               {isWalking && (
@@ -94,7 +120,7 @@ export default function WalkingComponent() {
                   />
                 </>
               )}
-            </div>
+            </>
           )}
 
           {/* Button */}
