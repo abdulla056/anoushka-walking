@@ -31,7 +31,7 @@ function App() {
             exit={{ opacity: 0, y: -100 }}
             transition={{ duration: 0.5 }}
             key={textIndex}
-            className=" text-white text-center text-5xl"
+            className=" text-white text-center text-3xl"
           >
             {initialText[textIndex]}
           </motion.div>
