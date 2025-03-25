@@ -1,14 +1,23 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import walking from "./assets/walking.gif";
+import standing from "./assets/standing.png";
+import taylors from "./assets/taylors.webp";
+import PrimaryButton from "./PrimaryButton";
 
 export default function WalkingComponent() {
   const [start, setStart] = useState(true);
+  const [isWalking, setIsWalking] = useState(false);
   const sendMessage = () => {
     const phoneNumber = "+600196381343";
     const message = encodeURIComponent("Hey Dudul Bozo! I'm starting to walk!");
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+    setStart(false);
   };
+
+  function onWalkingClick() {
+    setIsWalking((prev) => !prev);
+  }
   return (
     <>
       <AnimatePresence>
@@ -30,6 +39,23 @@ export default function WalkingComponent() {
             </button>
           </motion.div>
         )}
+      </AnimatePresence>
+      <AnimatePresence>
+        <div className="w-full flex flex-col justify-center">
+          {!start &&
+            (isWalking ? (
+              <img
+                src={walking}
+                alt="walking gif"
+              />
+            ) : (
+              <img
+                src={standing}
+                alt="walking gif"
+              />
+            ))}
+          <PrimaryButton onClick={()=>onWalkingClick()}>Click to start walking</PrimaryButton>
+        </div>
       </AnimatePresence>
     </>
   );
