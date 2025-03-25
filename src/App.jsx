@@ -65,14 +65,14 @@ function App() {
               <AnimatePresence>
                 {textIndex === initialText.length - 1 && (
                   <motion.img
-                    initial={{ opacity: 0, y:-350 }}
-                    animate={{ opacity: 1, y: -200 }}
+                    initial={{ opacity: 0, x:150 }}
+                    animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, y: -100 }}
                     transition={{ duration: 0.5, delay:1.5 }}
                     key={textIndex}
                     src={rabbit2}
                     alt="rabbit"
-                    className="rounded-full w-48 h-48 fixed top-0 translate-x-1/2"
+                    className="rounded-full w-36 h-36 fixed -bottom-36 right-9 translate-x-1/2"
                   />
                 )}
               </AnimatePresence>
@@ -92,7 +92,7 @@ function App() {
               <AnimatePresence mode="wait">
                 {textIndex === initialText.length - 1 && (
                   <motion.div
-                    className="text-white text-lg font-semibold cursor-pointer"
+                    className="text-white text-lg font-semibold cursor-pointer text-center"
                     initial={{ opacity: 0, y: -7 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
