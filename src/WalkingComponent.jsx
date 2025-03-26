@@ -10,9 +10,9 @@ export default function WalkingComponent() {
   const [progress, setProgress] = useState(-150);
 
   const sendMessage = () => {
-    // const phoneNumber = "+600196381343";
-    // const message = encodeURIComponent("Hey Dudul Bozo! I'm starting to walk!");
-    // window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+    const phoneNumber = "+600196381343";
+    const message = encodeURIComponent("Hey Dudul Bozo! I'm starting to walk!");
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
     setStart(false);
   };
 
