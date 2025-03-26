@@ -20,16 +20,6 @@ export default function WalkingComponent() {
     setIsWalking((prev) => !prev);
   }
 
-  // function updateProgress() {
-  //   setProgress((prev) => {
-  //     if (prev === 100) {
-  //       return prev;
-  //     } else {
-  //       return prev + 1;
-  //     }
-  //   });
-  // }
-
   useEffect(() => {
     let interval;
     if (isWalking) {
@@ -83,7 +73,7 @@ export default function WalkingComponent() {
               {isWalking && (
                 <>
                   <motion.div
-                    className="absolute w-6 h-6 bg-yellow-300 rounded-full opacity-80"
+                    className="absolute w-6 h-6 bg-blue-500 rounded-full opacity-80"
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{
                       scale: [0, 1.2, 1],
@@ -95,7 +85,7 @@ export default function WalkingComponent() {
                     style={{ left: "10%", top: "-20px" }}
                   />
                   <motion.div
-                    className="absolute w-4 h-4 bg-yellow-200 rounded-full opacity-90"
+                    className="absolute w-4 h-4 bg-red-500 rounded-full opacity-90"
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{
                       scale: [0, 1.5, 1],
@@ -107,7 +97,7 @@ export default function WalkingComponent() {
                     style={{ right: "10%", top: "-15px" }}
                   />
                   <motion.div
-                    className="absolute w-5 h-5 bg-yellow-400 rounded-full opacity-75"
+                    className="absolute w-5 h-5 bg-pink-500 rounded-full opacity-75"
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{
                       scale: [0, 1.3, 1],

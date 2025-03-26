@@ -14,7 +14,7 @@ import PrimaryButton from "./PrimaryButton";
 
 function App() {
   const [textIndex, setTextIndex] = useState(0);
-  const [walking, setWalking] = useState(true);
+  const [walking, setWalking] = useState(false);
 
   function updateTextIndex() {
     setTextIndex((prevIndex) => {
